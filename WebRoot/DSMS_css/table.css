@@ -1,0 +1,10 @@
+* {padding: 0px;margin: 0px}
+#studentTable {width:70%;height: 80px;border: 1px solid #000000 ;  border-collapse:collapse;}
+#studentTable *{width: 100px;border: 1px solid #000000; text-align: center;}
+#dormitoryTable {width: 70%;height: 80px;border: 1px solid #000000 ;  border-collapse:collapse;}
+#dormitoryTable *{width: 100px;border: 1px solid #000000; text-align: center;}
+#managemmentTable {width: 70%;height: 80px;border: 1px solid #000000 ;  border-collapse:collapse;}
+#managemmentTable *{width: 100px;border: 1px solid #000000; text-align: center;}
+.middle_table{width:100%;margin-top:30px;padding-left:15%}
+.middle_table h1{color:red}
+.middle_table table {font-size: 20px}

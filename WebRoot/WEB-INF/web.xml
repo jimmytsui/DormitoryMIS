@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN" "http://java.sun.com/dtd/web-app_2_3.dtd">
+<web-app>
+  <servlet>
+    <servlet-name>QueryStudentToDormitoryDo</servlet-name>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <description>This is the description of my J2EE component</description>
+    <servlet-class>com.Cotrol.QueryStudentToDormitoryDo</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>QueryDormitoryToStudentDo</servlet-name>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <description>This is the description of my J2EE component</description>
+    <servlet-class>com.Cotrol.QueryDormitoryToStudentDo</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>InsertStudentDO</servlet-name>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <description>This is the description of my J2EE component</description>
+    <servlet-class>com.Cotrol.InsertStudentDO</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>CheckinDo</servlet-name>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <description>This is the description of my J2EE component</description>
+    <servlet-class>com.Cotrol.CheckinDo</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>InsertManagementDO</servlet-name>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <description>This is the description of my J2EE component</description>
+    <servlet-class>com.Cotrol.InsertManagementDO</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>QueryManagementDO</servlet-name>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <description>This is the description of my J2EE component</description>
+    <servlet-class>com.Cotrol.QueryManagementDO</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>SelectAll</servlet-name>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <description>This is the description of my J2EE component</description>
+    <servlet-class>com.Cotrol.SelectAllDO</servlet-class>
+  </servlet>
+
+
+
+
+
+
+
+  <servlet-mapping>
+    <servlet-name>QueryStudentToDormitoryDo</servlet-name>
+    <url-pattern>/QueryStudentToDormitoryDo.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>QueryDormitoryToStudentDo</servlet-name>
+    <url-pattern>/QueryDormitoryToStudentDo.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>InsertStudentDO</servlet-name>
+    <url-pattern>/InsertStudentDO.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>CheckinDo</servlet-name>
+    <url-pattern>/CheckinDo.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>InsertManagementDO</servlet-name>
+    <url-pattern>/ManagementDO.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>QueryManagementDO</servlet-name>
+    <url-pattern>/QueryManagementDO.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>SelectAll</servlet-name>
+    <url-pattern>/SelectAllDO.do</url-pattern>
+  </servlet-mapping>
+
+</web-app>

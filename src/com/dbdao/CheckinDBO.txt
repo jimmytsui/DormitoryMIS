@@ -1,0 +1,93 @@
+package com.dbdao;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+import com.db.DbConnection;
+import com.model.CheckinBean;
+
+public class CheckinDBO {
+	public String checkin(CheckinBean checkinBean) {
+		ResultSet rs = null;
+		Statement stmt = null;
+		String sql = null;
+		int peo = 0;
+		Connection connection = new DbConnection().getConnect();
+		try {
+			stmt = connection.createStatement();
+			// 检查学生表
+			sql = "SELECT COUNT(*) FROM 学生 WHERE 学号=" + "'"
+					+ checkinBean.getSno() + "'";
+			rs = stmt.executeQuery(sql);
+			if (rs.next()) {
+				int i = rs.getInt(1);
+				if (i == 0) {
+					stmt.close();
+					connection.close();
+					return "-1";
+				}
+			}
+			//检查入住表此学生是否以入住
+			sql = "SELECT COUNT(*) as count FROM 入住 where 学号='"+checkinBean.getSno()+"'";
+			rs = stmt.executeQuery(sql);
+			if (rs.next()) {
+				int i = rs.getInt(1);
+				if (i != 0) {
+					stmt.close();
+					connection.close();
+					// 此学生以入住
+					return "-4";
+				}
+			}
+			// 检查宿舍表
+			sql = "SELECT COUNT(*) as count FROM 宿舍 WHERE 寝室号=" + "'"
+					+ checkinBean.getDno() + "' and 实住人数<应住人数";
+			rs = stmt.executeQuery(sql);
+			if (rs.next()) {
+				int i = rs.getInt(1);
+				if (i == 0) {
+					stmt.close();
+					connection.close();
+					// 无此宿舍或宿舍以满
+					return "-2";
+				}
+			}
+			//
+						sql = "SELECT COUNT(*) as count FROM 入住 where 床位号="+checkinBean.getBno()+ "and 寝室号='"+checkinBean.getDno()+"'";
+						rs = stmt.executeQuery(sql);
+						if (rs.next()) {
+							int i = rs.getInt(1);
+							if (i != 0) {
+								stmt.close();
+								connection.close();
+								// 此床位以被占用
+								return "-3";
+							}
+						}
+
+			// 插入新元组至宿舍表
+			sql = "Insert INTO 入住 values(" + "'" + checkinBean.getSno() + "','"
+					+ checkinBean.getDno() + "'," + checkinBean.getBno() + ")";
+			// Execute
+			stmt.executeUpdate(sql);
+			// 更新宿舍表
+//			sql = "UPDATE 宿舍 set 实住人数=" + (peo + 1) + " where 寝室号='"
+//					+ checkinBean.getDno() + "'";
+//			stmt.executeUpdate(sql);
+
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		try {
+			stmt.close();
+			connection.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "1";
+
+	}
+}

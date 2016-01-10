@@ -1,0 +1,52 @@
+@charset "utf-8";
+/* CSS Document */
+/*以下代码为网页初始化*/
+* { margin: 0; padding: 0;}
+.whole {
+	width: 100%;
+	height: 1000px;
+	background-color:#D3D3D3;
+}
+
+.header_photo {
+	width: 80%;
+	height: 150px;
+	margin: auto;
+}
+
+.header_photo img {
+	width: 100%;
+  height: 150px;
+  margin: auto;
+}
+
+.middle {
+	background-color: #A9A9A9;
+	width: 80%;
+	height: 600px;
+	margin: auto;
+	margin-top: 20px;
+}
+.left_menu {
+	width: 20%;
+	height: 500px;
+	background-color: #D3D3D3;
+	float: left;
+	margin-top: 40px;
+	margin-left: 40px;
+}
+.middle_view {
+	width: 70%;
+	height: 500px;
+	background-color: #D3D3D3;
+	float: right;
+	margin-right: 40px;
+	margin-top: 40px;
+}
+.footer {
+	background-color: #696969;
+	width: 80%;
+	height: 150px;
+	margin: auto;
+	margin-top: 20px;
+}

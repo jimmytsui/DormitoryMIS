@@ -1,0 +1,40 @@
+@charset "utf-8";
+/* CSS Document */
+/*以下代码控制整个中间搜索栏文档*/
+.menu {
+  float: left;
+  margin-left: 35%;
+  margin-top: 10%;
+}
+
+/*以下代码控制搜索框外侧提示的字体的样式*/
+.y {
+  font-size: 25px;
+  font-family: 黑体;
+  margin-left: -15%;
+}
+
+/*以下代码控制确认键大小*/
+.queren {
+  width: 100px;
+  height: 50px;
+  font-size: 30px;
+}
+
+/*以下代码控制搜索框大小以及搜索框内字体大小*/
+.kuang {
+  width: 300px;
+  height:50px;
+  font-size: 30px;
+}
+
+/*以下代码用了id选择器，为了在同一标签内区分类选择器*/
+/*以下代码控制按钮的确认键距离左面多大距离*/
+#anniu {
+  margin-left: 28%;
+}
+
+/*以下代码控制网页1，网页2，网页3的中间所有元素的距离父级div的顶部外边距*/
+#bianjv {
+  margin-top: 5%;
+}

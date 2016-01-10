@@ -1,0 +1,43 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*以下代码控制表单样式*/
+ul {
+	list-style-type:none;
+	margin:0;
+	padding:0;
+	text-align:center;
+}
+
+/*以下代码控制a标签内的属性*/
+a {
+	display:block;
+	margin-top: 6%;
+	width:90%;
+	height: 50px;
+	background-color:#bebebe;
+	text-decoration:none;
+	padding:4px;
+}
+
+p {
+	font-weight:bold;
+	font-size: 20px;
+	text-align:center;
+	text-transform:uppercase;
+  margin-top: 5%;
+}
+
+.z {
+	color: black;
+}
+
+#gengxin,#chaxun { font-size: 24px;
+	font-family: 黑体;
+	font-weight: 900;
+	margin-top: 8%;
+}
+
+.a {
+	color: green;
+}

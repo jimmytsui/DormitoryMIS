@@ -1,42 +1,52 @@
 package com.db;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+
+import org.apache.tomcat.jdbc.pool.DataSource;
 public class DbConnection {
 
-	String url = "jdbc:postgresql://localhost/dormitorymis";
-	//String url = "jdbc:postgresql://127.0.0.1/dormitorymis";
-	Connection connection = null;
-
-	public DbConnection() {
-
-		// TODO Auto-generated constructor stub
-		try {
-			try {
-				Class.forName("org.postgresql.Driver").newInstance();
-			} catch (InstantiationException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IllegalAccessException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (ClassNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			connection = DriverManager.getConnection(url, "postgres",
-					"324409476");
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-	}
-
+	private Connection connection = null;
+	private static org.apache.tomcat.jdbc.pool.DataSource dataSource;
+	
 	public Connection getConnect() {
 
+		    Future<Connection> future = null;
+			try {
+				dataSource=this.getI();
+				future = dataSource.getConnectionAsync();
+		    while(!future.isDone()) {
+		        System.out.println("Connection is not yet available. Do some background work");
+		        Thread.sleep(100); //simulate work       
+		    }   
+			connection=future.get();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (InterruptedException x) {    
+	            Thread.currentThread().interrupted();       
+	        } catch (ExecutionException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (NamingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}   
 		return connection;
+	}
+	
+	private DataSource getI() throws NamingException{
+		if(dataSource ==null){
+			Context init = new InitialContext();
+			Context envContext =(Context)init.lookup("java:comp/env");
+			dataSource=(DataSource)envContext.lookup("jdbc/pgsql");
+		}
+		return dataSource;
 	}
 }
